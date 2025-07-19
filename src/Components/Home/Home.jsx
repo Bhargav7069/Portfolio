@@ -2,7 +2,7 @@
 import Icon from './Icon';
 import Data from './Data';
 import ViewMore from './ViewMore';
-import './Home.scss'; // The CSS file that powers the entire section
+import './home.scss'; // The CSS file that powers the entire section
 
 const Home = () => {
   return (
