@@ -1,0 +1,22 @@
+/* COMPLETE CSS FOR FOOTER */
+
+.footer {
+  background-color: #0f172a; 
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__copy {
+  color: #cbd5e1; 
+  font-size: 0.9rem;
+  text-align: center;
+}

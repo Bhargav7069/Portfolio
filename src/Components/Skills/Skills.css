@@ -1,0 +1,129 @@
+/*==================================================
+  COMPLETE CSS FOR SKILLS (FORCED 4-COLUMN LAYOUT)
+==================================================*/
+
+/*==================== SECTION & BACKGROUND ====================*/
+.skills.section {
+  position: relative;
+  /* padding: 6rem 0; */
+  background-color: #0f172a;
+  overflow: hidden;
+}
+
+/* Re-using particle animation from Home */
+@function multiple-box-shadow($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  @for $i from 2 through $n {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  }
+  @return unquote($value);
+}
+#stars, #stars2, #stars3 {
+  position: absolute; top: 0; left: 0; width: 1px; height: 1px;
+  background: transparent; box-shadow: multiple-box-shadow(700);
+  animation: animStar 50s linear infinite;
+}
+#stars2 { width: 2px; height: 2px; box-shadow: multiple-box-shadow(200); animation: animStar 100s linear infinite; }
+#stars3 { width: 3px; height: 3px; box-shadow: multiple-box-shadow(100); animation: animStar 150s linear infinite; }
+@keyframes animStar { from { transform: translateY(0px); } to { transform: translateY(-2000px); } }
+
+.skills__blob { position: absolute; filter: blur(120px); z-index: 0; }
+.skills__blob--1 { width: 450px; height: 450px; top: -100px; left: -150px; background-color: hsla(250, 89%, 70%, 0.25); }
+.skills__blob--2 { width: 400px; height: 400px; bottom: -150px; right: -100px; background-color: hsla(180, 89%, 65%, 0.2); }
+
+/*==================== HEADER ====================*/
+.section__header {
+  text-align: center; margin-bottom: 4rem; position: relative; z-index: 1;
+}
+.section__title { font-size: 2.5rem; font-weight: 700; color: #fff; }
+.section__subtitle { font-size: 1rem; color: #94a3b8; display: block; }
+
+/*==================== SKILLS CONTAINER & CARDS ====================*/
+.skills__container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; 
+  position: relative;
+  z-index: 1;
+  max-width: 1200px; 
+}
+
+.skills__card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.skills__card:nth-child(1) { animation-delay: 0.2s; }
+.skills__card:nth-child(2) { animation-delay: 0.4s; }
+.skills__card:nth-child(3) { animation-delay: 0.6s; }
+.skills__card:nth-child(4) { animation-delay: 0.8s; }
+
+.skills__card:hover {
+  transform: translateY(-8px);
+  border-color: hsla(207, 89%, 70%, 0.5);
+  box-shadow: 0 0 20px hsla(207, 89%, 60%, 0.2);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*==================== CARD CONTENT ====================*/
+.skills__card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.skills__icon {
+  font-size: 2rem;
+  color: hsl(207, 89%, 70%);
+}
+.skills__card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+.skills__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.skill__tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.skill__tag:hover {
+  background-color: hsl(207, 89%, 60%);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/*==================== RESPONSIVE DESIGN FOR DIFFERENT SCREEN SIZES ====================*/
+
+@media screen and (max-width: 1024px) {
+  .skills__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .skills__container {
+    grid-template-columns: 1fr;
+  }
+}   

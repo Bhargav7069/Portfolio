@@ -1,0 +1,404 @@
+/*==================== HOME SECTION ====================*/
+.home.section {
+  position: relative;
+  padding: 8rem 0 4rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+
+/*==================== ANIMATED PARTICLE BACKGROUND (CORRECTED) ====================*/
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+  @for $i from 2 through $n {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+  }
+  @return $value;
+}
+
+#stars,
+#stars2,
+#stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: multiple-box-shadow(700);
+  animation: animStar 50s linear infinite;
+}
+#stars2 {
+  width: 2px;
+  height: 2px;
+  box-shadow: multiple-box-shadow(200);
+  animation: animStar 100s linear infinite;
+}
+#stars3 {
+  width: 3px;
+  height: 3px;
+  box-shadow: multiple-box-shadow(100);
+  animation: animStar 150s linear infinite;
+}
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+
+/* Animated Gradient Blobs */
+.home__blob {
+  position: absolute;
+  filter: blur(120px);
+  z-index: 0;
+}
+.home__blob--1 {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  right: -150px;
+  background-color: hsla(220, 89%, 65%, 0.3);
+}
+.home__blob--2 {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -100px;
+  background-color: hsla(250, 89%, 70%, 0.3);
+}
+
+/*==================== LAYOUT & CONTENT ====================*/
+.home__container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 3rem;
+  max-width: 1024px;
+}
+
+
+.home__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+.home__data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/*==================== Icon ICONS ====================*/
+.home_Icon {
+  display: flex;
+  align-items: center;
+  column-gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+.home_Icon-icon {
+  font-size: 1.25rem;
+  color: hsl(250, 89%, 70%);
+  transition: transform 0.3s, color 0.3s;
+}
+.home_Icon-icon:hover {
+  transform: translateY(-3px);
+  color: hsl(207, 89%, 60%);
+}
+
+/*==================== TEXT & TYPING ANIMATION ====================*/
+.home__title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+}
+.home__title span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid rgba(255, 255, 255, 0.75);
+  animation: typing 2.5s steps(30, end) 0.8s forwards,
+    blink-caret 0.75s step-end 0.8s infinite;
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.home__subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: hsl(207, 89%, 70%);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 3.3s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.home__description {
+  max-width: 450px;
+  color: #cbd5e1;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out 3.5s forwards;
+}
+
+/*==================== BUTTONS ====================*/
+.home__buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out 3.7s forwards;
+}
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+  overflow: hidden;
+}
+.button--flex {
+  background: linear-gradient(135deg, hsl(207, 89%, 60%), hsl(220, 89%, 65%));
+  color: white;
+  box-shadow: 0 4px 15px hsla(220, 60%, 50%, 0.3);
+}
+.button--flex:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px hsla(220, 60%, 50%, 0.4);
+}
+.button--flex::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+.button--flex:hover::before {
+  left: 100%;
+}
+.button--ghost {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.button--ghost:hover {
+  background: linear-gradient(135deg, hsl(207, 89%, 60%), hsl(220, 89%, 65%));
+  color: white;
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px hsla(220, 60%, 50%, 0.3);
+}
+.button--ghost:hover .button__icon {
+  animation: download-bounce 0.5s ease-out;
+}
+@keyframes download-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+.button__icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s;
+}
+
+/*==================== ANIMATED PHOTO ====================*/
+.home__image-container {
+  justify-self: center;
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+}
+.home__image-blob {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: morph-blob 8s ease-in-out infinite;
+  background: linear-gradient(135deg, hsl(207, 89%, 60%), hsl(250, 89%, 70%));
+}
+.home__img {
+  width: 270px;
+  height: 270px;
+  background: url(../../assets/bhargav.jpeg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+.home__image-blob:hover .home__img {
+  transform: scale(1.05);
+}
+@keyframes morph-blob {
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+/*==================== SCROLL DOWN ====================*/
+.home_scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(207, 57%, 70%);
+  transition: color 0.3s;
+  animation: bounce-scroll 2.5s ease-in-out 4s infinite;
+  opacity: 0; /* Starts invisible, faded in by animation */
+}
+.home_scroll:hover {
+  color: hsl(207, 89%, 60%);
+}
+.home_scroll-mouse {
+  width: 28px;
+  height: auto;
+}
+.wheel {
+  animation: scroll-wheel 2s ease-in-out infinite;
+  stroke: hsl(207, 89%, 60%);
+}
+@keyframes scroll-wheel {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(3.5px);
+  }
+}
+.home_scroll-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.home_scroll-arrow {
+  font-size: 1.25rem;
+}
+@keyframes bounce-scroll {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/*==================== RESPONSIVE DESIGN ====================*/
+@media screen and (min-width: 992px) {
+  .home__container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .home__content {
+    align-items: flex-start;
+    text-align: left;
+    order: 1;
+  }
+  .home__image-container {
+    order: 2;
+    width: 400px;
+    height: 400px;
+  }
+  .home__img {
+    width: 360px;
+    height: 360px;
+  }
+  .home_Icon,
+  .home__data,
+  .home_scroll {
+    align-items: flex-start;
+  }
+}
+@media screen and (max-width: 768px) {
+  .home.section {
+    padding-top: 6rem;
+  }
+  .home__image-container {
+    width: 250px;
+    height: 250px;
+    margin-top: 2rem;
+  }
+  .home__img {
+    width: 225px;
+    height: 225px;
+  }
+  .home__title {
+    font-size: 2.25rem;
+  }
+  .home__title span {
+    border-right-width: 2px;
+  }
+}
