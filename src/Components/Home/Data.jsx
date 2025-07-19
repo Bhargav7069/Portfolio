@@ -4,10 +4,8 @@
   const Data = () => {
     return (
       <div className="home__data">
-        <h1 className="home__title">
-          {/* The span is essential for the typing animation */}
-          <span>Hi, I&apos;m Bhargav Kikani</span>
-        </h1>
+       <h1 className="home__title"><span>Hi, I&apos;m Bhargav Kikani</span></h1>
+
         <h3 className="home__subtitle">MERN Stack Developer</h3>
         <p className="home__description">
   I&apos;m a <strong>MERN Stack Developer</strong> skilled in building dynamic, full-stack web applications using MongoDB, Express.js, React.js, and Node.js. I create responsive user interfaces and scalable backend solutions to deliver seamless and robust digital experiences.

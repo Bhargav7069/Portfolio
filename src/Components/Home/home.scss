@@ -137,8 +137,18 @@
   white-space: nowrap;
   border-right: 3px solid rgba(255, 255, 255, 0.75);
   animation: typing 2.5s steps(30, end) 0.8s forwards,
-    blink-caret 0.75s step-end 0.8s infinite;
+             blink-caret 0.75s step-end 0.8s infinite;
+  position: relative;
 }
+
+/* Dot appears after typing completes */
+.home__title span::after {
+  content: '.';
+  opacity: 0;
+  animation: showDot 0.1s ease-out 3.4s forwards; /* Typing duration + delay */
+}
+
+/* Keyframes */
 @keyframes typing {
   from {
     width: 0;
@@ -147,15 +157,22 @@
     width: 100%;
   }
 }
+
 @keyframes blink-caret {
-  from,
-  to {
+  0%, 100% {
     border-color: transparent;
   }
   50% {
     border-color: rgba(255, 255, 255, 0.75);
   }
 }
+
+@keyframes showDot {
+  to {
+    opacity: 1;
+  }
+}
+
 
 .home__subtitle {
   font-size: 1.1rem;
@@ -185,6 +202,12 @@
   transform: translateY(20px);
   animation: fadeInUp 1s ease-out 3.5s forwards;
 }
+.home__description {
+  max-width: 100%;
+  padding: 0 1rem;
+  font-size: 0.95rem; /* Smaller font for better fit */
+}
+
 
 /*==================== BUTTONS ====================*/
 .home__buttons {
@@ -400,5 +423,27 @@
   }
   .home__title span {
     border-right-width: 2px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home__buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .home__buttons .button {
+    width: 90%;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 480px) {
+  .home__title {
+    font-size: 1.8rem;
+  }
+
+  .home__subtitle {
+    font-size: 1rem;
   }
 }
